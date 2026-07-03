@@ -24,7 +24,6 @@ COPY --from=build /app/frontend/dist /usr/share/nginx/html
 # Copiar configuração do nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expor a porta
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
