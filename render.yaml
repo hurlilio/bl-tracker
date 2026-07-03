@@ -2,14 +2,18 @@ services:
   # Backend API
   - type: web
     name: bl-tracker-backend
-    env: node
-    region: oregon  # ou a região mais próxima de você
+    runtime: node
+    region: oregon
     plan: free
     buildCommand: cd backend && npm install
     startCommand: cd backend && node server.js
     envVars:
       - key: NODE_ENV
         value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://bl-tracker-frontend.onrender.com
       - key: DB_HOST
         fromDatabase:
           name: bl-tracker-db
@@ -30,15 +34,15 @@ services:
         fromDatabase:
           name: bl-tracker-db
           property: database
-      - key: JWT_SECRET
-        generateValue: true
 
-  # Frontend (Vue.js)
-  - type: static
+  # Frontend (Vue.js) - USANDO type: web
+  - type: web
     name: bl-tracker-frontend
-    env: static
+    runtime: node
+    region: oregon
+    plan: free
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
+    startCommand: cd frontend && npm run preview -- --port 10000 --host 0.0.0.0
     envVars:
       - key: VITE_API_URL
         value: https://bl-tracker-backend.onrender.com/api
@@ -46,3 +50,5 @@ services:
 databases:
   - name: bl-tracker-db
     plan: free
+    databaseName: bltracker
+    user: postgres
