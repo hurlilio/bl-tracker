@@ -1,5 +1,4 @@
 services:
-  # Backend API
   - type: web
     name: bl-tracker-backend
     runtime: docker
@@ -35,7 +34,6 @@ services:
           name: bl-tracker-db
           property: database
 
-  # Frontend (Vue.js com Nginx)
   - type: web
     name: bl-tracker-frontend
     runtime: docker
