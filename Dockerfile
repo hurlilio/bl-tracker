@@ -1,21 +1,22 @@
+# Build stage
 FROM node:18-alpine as build
 
 WORKDIR /app
 
-# Copiar arquivos do frontend
+# Copiar package.json do frontend
 COPY frontend/package*.json ./frontend/
 
-# Instalar dependências do frontend
+# Instalar dependências
 WORKDIR /app/frontend
 RUN npm install
 
-# Copiar o resto do código do frontend
+# Copiar o resto do frontend
 COPY frontend/ ./frontend/
 
-# Build do frontend
+# Build
 RUN npm run build
 
-# Servir com nginx
+# Production stage
 FROM nginx:alpine
 
 # Copiar os arquivos buildados
