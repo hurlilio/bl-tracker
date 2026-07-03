@@ -1,12 +1,29 @@
-﻿FROM node:18-alpine
+FROM node:18-alpine as build
 
 WORKDIR /app
 
+# Copiar arquivos de dependência
 COPY package*.json ./
+
+# Instalar dependências
 RUN npm ci
 
+# Copiar o resto do código
 COPY . .
 
-EXPOSE 5173
+# Build da aplicação
+RUN npm run build
 
-CMD ["npm", "run", "dev", "--", "--host"]
+# Servir com nginx
+FROM nginx:alpine
+
+# Copiar os arquivos buildados
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copiar configuração do nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expor a porta
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -12,8 +12,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
       - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
-    networks:
-      - bltracker_network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -35,13 +33,11 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=9857Dudu
       - DB_NAME=bltracker
-      - JWT_SECRET=bltracker_super_secret_key_2024_secure
+      - JWT_SECRET=bltracker_secret
       - FRONTEND_URL=http://localhost:5173
     depends_on:
       postgres:
         condition: service_healthy
-    networks:
-      - bltracker_network
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -54,13 +50,9 @@ services:
       dockerfile: Dockerfile
     container_name: bltracker_frontend
     ports:
-      - "5173:5173"
-    environment:
-      - VITE_API_URL=http://localhost:3000/api
+      - "5173:80"
     depends_on:
       - backend
-    networks:
-      - bltracker_network
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -69,7 +61,3 @@ services:
 
 volumes:
   postgres_data:
-
-networks:
-  bltracker_network:
-    driver: bridge
