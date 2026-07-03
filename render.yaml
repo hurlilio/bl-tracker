@@ -1,11 +1,11 @@
 services:
   - type: web
     name: bl-tracker-backend
-    runtime: docker
+    runtime: node
     region: oregon
     plan: free
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: .
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
     envVars:
       - key: NODE_ENV
         value: production
@@ -36,11 +36,11 @@ services:
 
   - type: web
     name: bl-tracker-frontend
-    runtime: docker
+    runtime: node
     region: oregon
     plan: free
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run preview -- --port 10000 --host 0.0.0.0
     envVars:
       - key: VITE_API_URL
         value: https://bl-tracker-backend.onrender.com/api
