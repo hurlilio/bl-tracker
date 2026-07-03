@@ -1,119 +1,204 @@
-﻿# 🎬 BL Tracker
+<div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Node](https://img.shields.io/badge/node-18.x-brightgreen)
-![Vue](https://img.shields.io/badge/vue-3.x-4fc08d)
+# 🎬 BL Tracker
 
-**BL Tracker** é uma aplicação web completa para organizar séries BL, registrar progresso e compartilhar interpretações com amigos.
+**Organize suas séries BL, acompanhe seu progresso e compartilhe interpretações com amigos.**
 
-## ✨ Funcionalidades
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)
+![Vue](https://img.shields.io/badge/Vue.js-3-42b883?logo=vuedotjs&logoColor=white)
 
-### 🔐 Autenticação
-- Cadastro e login com JWT
-- Proteção de rotas
+</div>
+
+---
+
+# 📖 Sobre
+
+O **BL Tracker** é uma aplicação web completa para fãs de séries **BL (Boys' Love)**.
+
+A plataforma permite organizar séries, registrar o progresso dos episódios assistidos, criar anotações pessoais, compartilhar interpretações e interagir com amigos através de grupos privados.
+
+---
+
+# ✨ Funcionalidades
+
+## 🔐 Autenticação
+
+- Cadastro de usuários
+- Login com JWT
+- Rotas protegidas
 - Sessão persistente
 
-### 👤 Usuário
+---
+
+## 👤 Usuário
+
 - Perfil personalizado
 - Lista de séries por status
 - Estatísticas de progresso
 
-### 📺 Séries
-- Catálogo completo
-- Busca e filtros
-- Detalhes com sinopse
+---
 
-### 📊 Progresso
-- Registro de episódios
+## 📺 Séries
+
+- Catálogo completo
+- Busca por nome
+- Filtros
+- Página de detalhes
+- Sinopse
+
+---
+
+## 📊 Progresso
+
+- Registro de episódios assistidos
 - Notas pessoais
 - Comentários
-- Status personalizado
+- Status personalizados
 
-### 👥 Grupos
+Exemplos:
+
+- Assistindo
+- Pausado
+- Concluído
+- Planejo assistir
+- Abandonado
+
+---
+
+## 👥 Grupos
+
 - Grupos privados
 - Código de convite
-- Membros e administradores
+- Administradores
+- Lista de membros
 
-### 💬 Interpretações
-- Textos colaborativos
-- Marcador de spoiler
+---
+
+## 💬 Interpretações
+
+- Publicações colaborativas
+- Marcação de spoiler
 - Feed de atividades
 
-## 🚀 Tecnologias
+---
 
-### Backend
-- **Node.js** + **Express** - API REST
-- **PostgreSQL** - Banco de dados
-- **JWT** - Autenticação
-- **bcryptjs** - Criptografia
+# 🚀 Tecnologias
 
-### Frontend
-- **Vue.js 3** - Framework progressivo
-- **Pinia** - Gerenciamento de estado
-- **Vue Router** - Navegação
-- **Axios** - Requisições HTTP
+## Backend
 
-### DevOps
-- **Docker** - Containerização
-- **Docker Compose** - Orquestração
+- Node.js
+- Express
+- PostgreSQL
+- JWT
+- bcryptjs
 
-## 📦 Instalação
+---
 
-### Pré-requisitos
+## Frontend
+
+- Vue.js 3
+- Pinia
+- Vue Router
+- Axios
+- Vite
+
+---
+
+## DevOps
+
+- Docker
+- Docker Compose
+
+---
+
+# 📦 Instalação
+
+## Pré-requisitos
 
 - Node.js 18+
 - PostgreSQL 15+
-- npm ou yarn
+- npm ou Yarn
 - Docker (opcional)
 
-### 1. Clonar o repositório
+---
 
-\\\ash
+## 1️⃣ Clonar o projeto
+
+```bash
 git clone https://github.com/seu-usuario/bl-tracker.git
+
 cd bl-tracker
-\\\
+```
 
-### 2. Configurar o backend
+---
 
-\\\ash
+## 2️⃣ Backend
+
+```bash
 cd backend
+
 npm install
+
 cp .env.example .env
-# Edite o arquivo .env com suas configurações
+```
+
+Edite o arquivo `.env` com suas configurações.
+
+Depois execute:
+
+```bash
 npm run dev
-\\\
+```
 
-### 3. Configurar o frontend
+---
 
-\\\ash
+## 3️⃣ Frontend
+
+```bash
 cd frontend
+
 npm install
+
 cp .env.example .env
+
 npm run dev
-\\\
+```
 
-### 4. Acessar a aplicação
+---
 
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:3000/api
-- Health Check: http://localhost:3000/api/health
+## 4️⃣ Acessar a aplicação
 
-### 5. Credenciais de exemplo
+| Serviço | URL |
+|----------|-----|
+| Frontend | http://localhost:5173 |
+| API | http://localhost:3000/api |
+| Health Check | http://localhost:3000/api/health |
 
-- Email: admin@bltracker.com
-- Senha: admin123
+---
 
-## 🐳 Usando Docker
+## 5️⃣ Credenciais de demonstração
 
-\\\ash
+```text
+Email: admin@bltracker.com
+Senha: admin123
+```
+
+---
+
+# 🐳 Executando com Docker
+
+```bash
 docker-compose up -d
-\\\
+```
 
-## 📁 Estrutura do Projeto
+---
 
-\\\
+# 📁 Estrutura do Projeto
+
+```text
 bl-tracker/
+│
 ├── backend/
 │   ├── src/
 │   │   ├── config/
@@ -122,9 +207,11 @@ bl-tracker/
 │   │   ├── models/
 │   │   ├── routes/
 │   │   └── app.js
+│   │
 │   ├── .env
 │   ├── package.json
 │   └── server.js
+│
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -134,88 +221,162 @@ bl-tracker/
 │   │   ├── views/
 │   │   ├── App.vue
 │   │   └── main.js
+│   │
 │   ├── .env
 │   ├── package.json
 │   └── vite.config.js
+│
 ├── database/
 │   ├── schema.sql
 │   └── seed.sql
+│
 ├── docker-compose.yml
+│
 └── README.md
-\\\
+```
 
-## 🔒 Variáveis de Ambiente
+---
 
-### Backend (.env)
+# 🔒 Variáveis de Ambiente
 
-\\\env
+## Backend
+
+```env
 PORT=3000
+
 NODE_ENV=development
+
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=postgres
 DB_NAME=bltracker
+
 JWT_SECRET=your_secret_key
 JWT_EXPIRES_IN=7d
+
 FRONTEND_URL=http://localhost:5173
-\\\
-
-### Frontend (.env)
-
-\\\env
-VITE_API_URL=http://localhost:3000/api
-\\\
-
-## 📚 API Endpoints
-
-### Autenticação
-- POST /api/auth/register - Cadastro
-- POST /api/auth/login - Login
-- GET /api/auth/me - Perfil
-
-### Usuários
-- GET /api/users/profile - Perfil
-- PUT /api/users/profile - Atualizar
-- GET /api/users/progress - Progresso
-- GET /api/users/stats - Estatísticas
-
-### Séries
-- GET /api/series - Listar
-- GET /api/series/:id - Detalhes
-- POST /api/series - Criar (admin)
-
-### Progresso
-- POST /api/progress - Salvar
-- GET /api/progress/:serieId - Buscar
-
-### Grupos
-- POST /api/groups - Criar
-- POST /api/groups/join/:codigo - Entrar
-- GET /api/groups/my-groups - Meus grupos
-
-### Interpretações
-- POST /api/interpretations - Criar
-- GET /api/interpretations/serie/:serieId - Listar
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie sua branch (git checkout -b feature/AmazingFeature)
-3. Commit suas alterações (git commit -m 'Add some AmazingFeature')
-4. Push para a branch (git push origin feature/AmazingFeature)
-5. Abra um Pull Request
-
-## 📝 Licença
-
-Distribuído sob a licença MIT. Veja \LICENSE\ para mais informações.
-
-## 📧 Contato
-
-Equipe BL Tracker - contato@bltracker.com
-
-Link do Projeto: [https://github.com/seu-usuario/bl-tracker](https://github.com/seu-usuario/bl-tracker)
+```
 
 ---
 
-Desenvolvido com ❤️ para a comunidade BL
+## Frontend
+
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+---
+
+# 📚 API
+
+## 🔐 Autenticação
+
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| POST | `/api/auth/register` | Cadastro |
+| POST | `/api/auth/login` | Login |
+| GET | `/api/auth/me` | Perfil |
+
+---
+
+## 👤 Usuários
+
+| Método | Endpoint |
+|---------|----------|
+| GET | `/api/users/profile` |
+| PUT | `/api/users/profile` |
+| GET | `/api/users/progress` |
+| GET | `/api/users/stats` |
+
+---
+
+## 📺 Séries
+
+| Método | Endpoint |
+|---------|----------|
+| GET | `/api/series` |
+| GET | `/api/series/:id` |
+| POST | `/api/series` *(Administrador)* |
+
+---
+
+## 📊 Progresso
+
+| Método | Endpoint |
+|---------|----------|
+| POST | `/api/progress` |
+| GET | `/api/progress/:serieId` |
+
+---
+
+## 👥 Grupos
+
+| Método | Endpoint |
+|---------|----------|
+| POST | `/api/groups` |
+| POST | `/api/groups/join/:codigo` |
+| GET | `/api/groups/my-groups` |
+
+---
+
+## 💬 Interpretações
+
+| Método | Endpoint |
+|---------|----------|
+| POST | `/api/interpretations` |
+| GET | `/api/interpretations/serie/:serieId` |
+
+---
+
+# 🤝 Contribuindo
+
+1. Faça um **Fork** do projeto.
+
+2. Crie uma branch.
+
+```bash
+git checkout -b feature/NovaFuncionalidade
+```
+
+3. Faça suas alterações.
+
+```bash
+git commit -m "Nova funcionalidade"
+```
+
+4. Envie para o GitHub.
+
+```bash
+git push origin feature/NovaFuncionalidade
+```
+
+5. Abra um Pull Request.
+
+---
+
+# 📝 Licença
+
+Este projeto está distribuído sob a licença **MIT**.
+
+Consulte o arquivo **LICENSE** para mais informações.
+
+---
+
+# 📧 Contato
+
+**Equipe BL Tracker**
+
+📩 contato@bltracker.com
+
+🔗 **Projeto**
+
+https://github.com/seu-usuario/bl-tracker
+
+---
+
+<div align="center">
+
+**Desenvolvido com ❤️ para a comunidade BL**
+
+</div>
